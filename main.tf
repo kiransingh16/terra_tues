@@ -54,15 +54,11 @@ resource "aws_instance" "instance" {
   instance_type = "t3.micro"
 
   count=3
-
+key_name="user5_deployer-key"
   tags = {
-
-    Name = "instance-${count.index}",
-
-    role=count.index==0?"lb": (count.index<3?"web":"backend")
-
+    Name = "user5-instance-${count.index}",
+    role=count.index==0?"user5-lb": (count.index<3?"user5-web":"user5-backend")
   }
-
 }
 
  
